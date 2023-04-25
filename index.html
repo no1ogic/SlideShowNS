@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TELL ME</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.js" integrity="sha512-H05oT7BAjM9Ai1IaFX9zr61NtE2e1P0MkTz3AZXBnseaJSAOt2FGMFJ+vVGutaJxEGA1jxUiYsTBYQNE08/Erw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         class Intro extends Phaser.Scene {
@@ -26,10 +26,17 @@
                 this.load.image('over2','over2.png');
                 this.load.image('bg3','bg3.png');
                 this.load.image('bg2','bg2.png');
-                this.load.image('vor','vortex.png');
+                this.load.image('bg4','bg4.png')
+                this.load.image('vor','vortex.png');;
                 this.load.image('top','top.png');
+                this.load.image('circ','circ.png');
+                this.load.image('hand','hands.png');
+                this.load.image('logo','logo.png');
+                this.load.image('opt','opt2.png');
                 this.load.audio('room',['room.ogg']);
                 this.load.audio('type',['type.ogg']);
+                this.load.audio('uh',['UHHH.ogg']);
+                this.load.image('ico',['ico.png']);
 
             }
             create() {
@@ -48,6 +55,7 @@
             }
             create() {
                 // Fade into and out of a blue scene
+                this.cameras.main.fadeIn(1000, 0,0,0);
                 const music = this.sound.add('room',{loop: true});
                 music.play();
                 this.imageObject = this.add.image(960,540,'bg3').setOrigin(0.5,0.5);
@@ -55,8 +63,8 @@
                 //this.imageObject = this.add.image(960,540,'over2').setOrigin(0.5,0.5);
                 //this.add.text(10,10, "This is scene Two.");
                 this.imageObject = this.add.image(960,540,'vor').setOrigin(0.5,0.5);
-                this.imageObject.setScale(0.2);
-                this.add.text(960, 800, "do we end?", { font: 'bold 100px sans-serif', color: "#000000"} ).setOrigin(0.5, 0.5);
+                this.imageObject.setScale(0.15);
+                this.add.text(960, 900, "do we end?", { font: 'bold 100px sans-serif', color: "#000000"} ).setOrigin(0.5, 0.5);
 
                 this.cameras.main.fadeIn(1000, 0,0,0);
                 this.input.on('pointerdown', ()=> music.stop());
@@ -69,6 +77,7 @@
                 super('three');
             }
             create() {
+                this.cameras.main.fadeIn(1000, 0,0,0);
                 const music = this.sound.add('room',{loop: true});
                 music.play();
                 // Drop text over a pink background
@@ -77,26 +86,120 @@
                 this.imageObject = this.add.image(960,540,'top').setOrigin(0.5,0.5);
                 this.imageObject.setScale(0.2);
                 this.add.text(960, 100, "do we connect?", { font: 'bold 100px sans-serif', color: "#000000"} ).setOrigin(0.5, 0.5);
-                this.add.text(10,10, "This is scene Three.");
+                
                 this.input.on('pointerdown', ()=> music.stop());
-                this.input.on('pointerdown', () => this.scene.start('outro') );
+                this.input.on('pointerdown', () => this.scene.start('four') );
             }
         }
+        class Four extends Phaser.Scene {
+            constructor() {
+                super('four');
+            }
+            create(){
+                this.cameras.main.fadeIn(100, 0,0,0);
+                this.imageObject = this.add.image(960,540,'bg4').setOrigin(0.5,0.5);
+                const music = this.sound.add('room',{loop: true});
+                music.play();
+                const music2 = this.sound.add('type',{loop: true});
+                music2.play();
+                //this.imageObject = this.add.image(960,540,'bg3').setOrigin(0.5,0.5);
+                let texx = "It is quite frustrating, you know.\n\This isnt exactly how I want to spend your time. \n\I think you know that. "
+                this.add.text(885, 540, texx, { font: 'bold 50px sans-serif', color: "#000000", align: "center"} ).setOrigin(0.5, 0.5);
+                this.input.on('pointerdown', ()=> music.stop());
+                this.input.on('pointerdown', ()=> music2.stop());
+                this.input.on('pointerdown', () => this.scene.start('five') );
+            }   
+        }
+        class Five extends Phaser.Scene {
+            constructor() {
+                super('five');
+            }
+            create() {
 
+                const music = this.sound.add('uh',{volume: 0.1, loop: true});
+                music.play();
+                const music2 = this.sound.add('room',{loop: true});
+                music2.play();
+                const music3 = this.sound.add('type',{loop: true});
+                music3.play();
+
+                this.imageObject = this.add.image(960,540,'bg3').setOrigin(0.5,0.5);
+                this.imageObject = this.add.image(950,400,'ico').setOrigin(0.5,0.5).setScale(0.8);
+                //this.add.text(960, 300, "do not run from me, just...", { font: 'bold 100px sans-serif'} ).setOrigin(0.5, 0.5);
+                //this.cameras.main.fadeIn(5000, 0,0,0);
+                this.add.text(960, 800, "do not run from me, just...", { font: 'bold 100px sans-serif', color: "#000000"} ).setOrigin(0.5, 0.5);
+                //this.graphics.fillCircle(100,100,50);
+                this.graphics = this.add.graphics();
+                this.graphics.fillStyle(0x262626, .3);
+
+                let cage = this.graphics.fillRect(650,0,650,400);
+                //let circ = this.graphics.fillCircle(0,65,100);
+                this.tweens.add
+                ({
+                    targets: cage,
+                    x:200,
+                    y:300,
+                    duration: 5000,
+                    ease: 'Linear',
+                    repeat: -1,
+                });
+                let circ = this.graphics.fillCircle(0,65,100);
+                this.tweens.add
+                ({
+                    targets: cage,
+                    x:300,
+                    y:200,
+                    duration: 5000,
+                    ease: 'Linear',
+                    repeat: 0,
+                });
+
+
+
+
+                this.input.on('pointerdown', ()=> music.stop());
+                this.input.on('pointerdown', ()=> music2.stop());
+                this.input.on('pointerdown', ()=> music3.stop());
+                this.input.on('pointerdown', () => this.scene.start('six') );
+            }
+        }
+        class Six extends Phaser.Scene{
+            constructor(){
+                super('six');
+            }
+            create(){
+                //this.add.text(10,10, "fgdfgdfgfg.");
+                const music2 = this.sound.add('room',{loop: true});
+                music2.play();
+                const music3 = this.sound.add('type',{loop: true});
+                music3.play();
+                this.imageObject = this.add.image(960,540,'bg3').setOrigin(0.5,0.5);
+                this.imageObject = this.add.image(960,540,'circ').setOrigin(0.5,0.5).setScale(0.2);
+                this.imageObject = this.add.image(960,540,'hand').setOrigin(0.5,0.5).setScale(0.4);
+                this.imageObject = this.add.image(450,540,'logo').setOrigin(0.5,0.5).setScale(0.25);
+                this.imageObject = this.add.image(1600,540,'opt').setOrigin(0.5,0.5).setScale(0.7);
+                this.input.on('pointerdown', ()=> music2.stop());
+                this.input.on('pointerdown', ()=> music3.stop());
+                this.input.on('pointerdown', () => this.scene.start('outro') );
+
+
+            }
+        }
         class Outro extends Phaser.Scene {
             constructor() {
                 super('outro');
             }
             create() {
-                this.add.text(10,10, "This is the end. Click to restart.");
+                this.add.text(960, 540, 'i can make it right..', { font: 'bold 100px sans-serif'} ).setOrigin(0.5, 0.5);
                 this.input.on('pointerdown', () => this.scene.start('intro') );
+
             }
         }
 
         let game = new Phaser.Game({
             width: 1920,
             height: 1080,
-            scene: [Intro, One, Two, Three, Outro]
+            scene: [Intro, One, Two, Three, Four, Five, Six, Outro]
         });
     </script>
 </head>
