@@ -48,7 +48,7 @@
             }
             create() {
                 // Fade into and out of a blue scene
-                const music = this.sound.add('room');
+                const music = this.sound.add('room',{loop: true});
                 music.play();
                 this.imageObject = this.add.image(960,540,'bg3').setOrigin(0.5,0.5);
                 //this.imageObject.setScale(0.5);
@@ -69,6 +69,8 @@
                 super('three');
             }
             create() {
+                const music = this.sound.add('room',{loop: true});
+                music.play();
                 // Drop text over a pink background
                 //this.cameras.main.setBackgroundColor('rgba(255,0,128)');
                 this.imageObject = this.add.image(960,540,'bg2').setOrigin(0.5,0.5);
@@ -76,6 +78,7 @@
                 this.imageObject.setScale(0.2);
                 this.add.text(960, 100, "do we connect?", { font: 'bold 100px sans-serif', color: "#000000"} ).setOrigin(0.5, 0.5);
                 this.add.text(10,10, "This is scene Three.");
+                this.input.on('pointerdown', ()=> music.stop());
                 this.input.on('pointerdown', () => this.scene.start('outro') );
             }
         }
