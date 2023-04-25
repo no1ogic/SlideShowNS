@@ -13,6 +13,7 @@
             }
             create() {
                 this.add.text(960, 540, 'its okay. i'+"'"+"m here.", { font: 'bold 100px sans-serif'} ).setOrigin(0.5, 0.5);
+                this.add.text(960, 900, 'click through to advance.', { font: 'bold 50px sans-serif'} ).setOrigin(0.5, 0.5);
                 this.input.on('pointerdown', () => this.scene.start('one') );
             }
         }
@@ -191,6 +192,7 @@
             }
             create() {
                 this.add.text(960, 540, 'i can make it right..', { font: 'bold 100px sans-serif'} ).setOrigin(0.5, 0.5);
+                this.add.text(960, 900, 'click to restart.', { font: 'bold 50px sans-serif'} ).setOrigin(0.5, 0.5);
                 this.input.on('pointerdown', () => this.scene.start('intro') );
 
             }

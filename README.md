@@ -1,7 +1,7 @@
 # SlideShowNS
 ** My project fulfills the requirements in the following ways:
 ** 1. There are six distinct visual scenes with different backgrounds and assets.
-** 2. There are 3 audio assets, one background and two sound effects.
+** 2. There are 3 audio assets, one background and two sound effects. All made by myself.
 ** 3. I have 10 image assets in my piece that I made myself
         **The hands.png models are from Adobe Mixamo, an attribution free
         **database for 3d modelers. All renders were made in Blender and PS.
