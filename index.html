@@ -12,7 +12,7 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10, "Click to begin.");
+                this.add.text(960, 540, 'ITS OKAY. I'+"'"+"M HERE.", { font: 'bold 100px sans-serif'} ).setOrigin(0.5, 0.5);
                 this.input.on('pointerdown', () => this.scene.start('one') );
             }
         }
@@ -21,10 +21,18 @@
             constructor() {
                 super('one');
             }
+            preload(){
+                this.load.path = './assets/';
+                this.load.image('over2','over2.png');
+
+            }
             create() {
                 // Just plain text on default background
-                this.add.text(10,10, "This is scene One.");
-                this.time.delayedCall(1000, () => this.scene.start('two'));
+                this.cameras.main.fadeIn(1000, 0,0,0);
+                this.cameras.main.setBackgroundColor('rgba(255, 255, 255)');
+                this.imageObject = this.add.image(960,540,'over2').setOrigin(0.5,0.5);
+                this.imageObject.setScale(0.2);
+                this.input.on('pointerdown', () => this.scene.start('two') );
             }
         }
 
@@ -74,8 +82,8 @@
         }
 
         let game = new Phaser.Game({
-            width: 640,
-            height: 480,
+            width: 1920,
+            height: 1080,
             scene: [Intro, One, Two, Three, Outro]
         });
     </script>
